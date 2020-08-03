@@ -1,0 +1,16 @@
+<h1>Userpage</h1>
+
+<% if user_signed_in? %>
+	
+
+
+<%= current_user.email %>
+
+<br>
+
+<% if current_user.avatar.attached? %>
+
+<%= image_tag url_for(current_user.avatar) %>
+
+<% end %>
+<% end %>
