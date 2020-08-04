@@ -13,7 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id
-    redirect_to 'welcome#userpage'
+    sign_in(user)
+    redirect_to root_url
   end
 
   # GET /resource/edit

@@ -8,9 +8,11 @@
 
 <br>
 
+<%= link_to 'logout', destroy_user_session_path , method: :delete %>
+
 <% if current_user.avatar.attached? %>
 
-<%= image_tag url_for(current_user.avatar) %>
+<%= image_tag(current_user.avatar, size: "300x300") %>
 
 <% end %>
 <% end %>
