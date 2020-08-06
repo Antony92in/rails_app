@@ -1,9 +1,16 @@
 <div id="content">
 	<h1>Welcome to Rails App</h1>
 
+<% if user_signed_in? %>
+
+	<%= current_user.email %>
+	<br>
+
+	<%= link_to 'userpage', 'welcome/userpage' %>
+	<% else %>
 	<%= link_to 'Registration', new_user_registration_path %>
 
 	<%= link_to 'Login', new_user_session_path %>
+<% end %>
 
-	<%= link_to 'userpage', 'welcome/userpage' %>
 </div>
