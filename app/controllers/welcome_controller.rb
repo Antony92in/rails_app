@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
   end
 
   def userpage
+    @posts = Post.all
   	render 'welcome/userpage'
   end
 end

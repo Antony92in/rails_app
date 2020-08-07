@@ -8,11 +8,25 @@
 
 <br>
 
-<%= link_to 'logout', destroy_user_session_path , method: :delete %>
+<div>
+  <a href="#">Add post</a>
+</div>
+<%= form_with(model: @post, url: posts_path, local: true ) do |f| %>
+  <%= f.text_field (:title) %>
+  <br>
+  <%= f.text_field (:content)%>
+  <%= f.submit %>
+<%end%>
 
 <% if current_user.avatar.attached? %>
 
 <%= image_tag(current_user.avatar, size: "300x300") %>
 
 <% end %>
+<% end %>
+<hr>
+<% @posts.each do |post| %>
+
+<%= post.title %> <br>
+
 <% end %>

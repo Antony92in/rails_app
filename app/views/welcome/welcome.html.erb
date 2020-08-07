@@ -1,12 +1,14 @@
-<div id="content">
+<div id="main">
 	<h1>Welcome to Rails App</h1>
 
 <% if user_signed_in? %>
 
 	<%= current_user.email %>
 	<br>
-
+	
 	<%= link_to 'userpage', 'welcome/userpage' %>
+	<br>
+	<%= link_to 'logout', destroy_user_session_path , method: :delete %>
 	<% else %>
 	<%= link_to 'Registration', new_user_registration_path %>
 
@@ -14,3 +16,4 @@
 <% end %>
 
 </div>
+
