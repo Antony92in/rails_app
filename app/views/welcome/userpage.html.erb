@@ -2,27 +2,27 @@
 
 <% if user_signed_in? %>
 	
-
-
-<%= current_user.email %>
-
-<br>
-
-<div>
-  <a href="#">Add post</a>
-</div>
-<%= form_with(model: @post, url: posts_path, local: true ) do |f| %>
-  <%= f.text_field (:title) %>
-  <br>
-  <%= f.text_field (:content)%>
-  <%= f.submit %>
-<%end%>
-
 <% if current_user.avatar.attached? %>
 
 <%= image_tag(current_user.avatar, size: "300x300") %>
 
 <% end %>
+
+<%= current_user.email %>
+
+
+<br>
+
+
+<%= form_with(model: @post, url: posts_path, local: true ) do |f| %>
+  <%= f.text_field (:title) %>
+  <br>
+  <%= f.text_field (:content)%>
+  <br>
+  <%= f.submit "Add post" %>
+<%end%>
+
+
 <% end %>
 <hr>
 <% @posts.each do |post| %>

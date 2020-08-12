@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   end
 
   def userpage
-    @posts = Post.all
+    @posts = Post.where('author = ?', current_user.id)
   	render 'welcome/userpage'
   end
 end

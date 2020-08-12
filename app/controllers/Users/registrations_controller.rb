@@ -10,21 +10,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    user = User.create!(user_params)
-    session[:user_id] = user.id
-    sign_in(user)
-    redirect_to root_url
-  end
+  # def create
+  # end
 
   # GET /resource/edit
   # def edit
-  #   super
   # end
 
   # PUT /resource
   # def update
-  #   super
   # end
 
   # DELETE /resource
