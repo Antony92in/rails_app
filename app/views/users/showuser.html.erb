@@ -1,1 +1,15 @@
 <%= @user.email %>
+
+<hr>
+
+
+<% @posts.each do |post| %>
+    <%= post.title %><br>
+    <%= post.content %><br>
+    <% if post.pic.attached? %>
+
+<%= image_tag(post.pic, size: "300x300") %>
+
+<% end %>
+    <hr>
+<% end %>
