@@ -11,6 +11,8 @@
 
 <% end %>
 	<br>
+	<%= link_to 'My page', '/userpage'%>
+	<%= link_to 'All users', 'users'%>
 	<%= link_to 'Edit page', edit_user_registration_path %>
 	<%= link_to 'Logout', destroy_user_session_path , method: :delete %>
 	<% else %>
@@ -24,16 +26,3 @@
 
 
 
-
-
-<hr>
-<div class="posts">
-<h1>My posts</h1>
-
-
-<% @posts.each do |post| %>
-<%= post.title %>
-<% end %>
-<div>
-
-  
