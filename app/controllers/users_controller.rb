@@ -9,6 +9,14 @@ class UsersController < ApplicationController
         @posts = Post.where("author = ?", params[:id])
         render 'users/showuser'
     end
+
+    def follow
+        fol = Follower.new
+        fol.followed_user = params[:user_id]
+        fol.follower = current_user.id
+        fol.save!
+        redirect_to action: "users"
+     end
     
     
 end

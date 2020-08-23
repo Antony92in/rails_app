@@ -1,11 +1,21 @@
-
 <% @users.each do |user| %>
-    <% if user.avatar.attached? %>
-
-<%= image_tag(user.avatar, size: "100x100") %>
-
-<% end %>
+  <% if user.avatar.attached? %>
+    <%= image_tag(user.avatar, size: "100x100") %>
+  <% end %>
     <%= user.email %>
     <%= link_to 'user', "user/#{user.id}" %>
+    <%= link_to 'follow', "follow/#{user.id}" %>
+    <br>
+    <%fol = Follower.where('followed_user = ?', user.id) %>
+    <% arr = [] %>
+        <% fol.each do |f| %>
+        <% arr << f.follower %>
+        <% end%>
+        
+        <% if arr.include?(current_user.id) %>
+            <%= 'followed'%>
+        <% end %>
+        
     <hr>
 <% end %>
+
