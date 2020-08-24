@@ -4,7 +4,6 @@
   <% end %>
     <%= user.email %>
     <%= link_to 'user', "user/#{user.id}" %>
-    <%= link_to 'follow', "follow/#{user.id}" %>
     <br>
     <%fol = Follower.where('followed_user = ?', user.id) %>
     <% arr = [] %>
@@ -13,7 +12,10 @@
         <% end%>
         
         <% if arr.include?(current_user.id) %>
-            <%= 'followed'%>
+            <%= 'followed' %>
+            <%= link_to 'unfollow', "/unfollow/#{user.id}", method: :delete %>
+            <% else %>
+             <%= link_to 'follow', "follow/#{user.id}" %>
         <% end %>
         
     <hr>

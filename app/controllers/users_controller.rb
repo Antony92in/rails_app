@@ -18,5 +18,9 @@ class UsersController < ApplicationController
         redirect_to action: "users"
      end
     
+    def unfollow
+        Follower.delete_by(followed_user: params[:user_id], follower: current_user.id)
+        redirect_to action: "users"
+    end
     
 end
