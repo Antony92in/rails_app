@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   get '/userpage', to: 'welcome#userpage'
 
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get '/user/:id', to: 'users#show'
 
   get '/follow/:user_id', to: 'users#follow'
+
+  post '/comment', to: 'comments#create'
 
   delete '/unfollow/:user_id', to: 'users#unfollow'
   

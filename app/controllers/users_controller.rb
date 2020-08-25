@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     
     def unfollow
         Follower.delete_by(followed_user: params[:user_id], follower: current_user.id)
-        redirect_back fallback_location: @user
+        redirect_back fallback_location: '/'
     end
     
 end

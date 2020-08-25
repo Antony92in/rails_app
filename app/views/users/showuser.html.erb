@@ -6,10 +6,26 @@
 <% @posts.each do |post| %>
     <%= post.title %><br>
     <%= post.content %><br>
-    <% if post.pic.attached? %>
-
-<%= image_tag(post.pic, size: "300x300") %>
-
+    <% comments = post.comments%>
+  <% if post.pic.attached? %>
+    <%= image_tag(post.pic, size: "300x300") %>
+  <% end %>
+  <br>
+  <% comments.each do |c|%>
+  <%= c.author %>:
+  <%= c.comment %><br>
+  <%end%>
+  <h2>Add a comment:</h2>
+<%= form_with(model: @post, url: '/comment', method: :post,  local: true) do |form| %>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+    <%= form.hidden_field :post_id, value: post.id %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
 <% end %>
+ 
+
     <hr>
 <% end %>

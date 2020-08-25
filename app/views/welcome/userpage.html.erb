@@ -41,11 +41,15 @@
 
 <%= post.title %> <br>
 
-<% if post.pic.attached? %>
-
-<%= image_tag(post.pic, size: "500x300") %>
-
-<% end %>
-
+  <% if post.pic.attached? %>
+    <%= image_tag(post.pic, size: "500x300") %>
+  <% end %>
+<br>
+<% comments = post.comments %>
+  <% comments.each do |c| %>
+    <%= c.author %>:
+    <%= c.comment %>
+    <br>
+  <% end %>
 <hr>
 <% end %>
