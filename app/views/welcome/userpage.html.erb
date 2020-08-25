@@ -8,10 +8,17 @@
 
 <% end %>
 
-<%= link_to 'Followed users'%>
+<div>
+<h4>Users i follow</h4>
+</div>
 
-
-<br>
+<% @followers.each do |f| %>
+  <%= f.email %>
+  <%= link_to 'user', "user/#{f.id}" %>
+  <%= link_to 'unfollow', "/unfollow/#{f.id}", method: :delete %>
+    <br>
+<% end %>
+<hr>
 
 
 <%= form_with(model: @post, url: posts_path, local: true ) do |f| %>
