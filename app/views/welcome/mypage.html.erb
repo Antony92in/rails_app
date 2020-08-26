@@ -7,36 +7,31 @@
 <%= image_tag(current_user.avatar, size: "300x300") %>
 
 <% end %>
-
+<%= link_to 'main', '/'%>
 <div>
 <h4>Users i follow</h4>
-</div>
-
 <% @followers.each do |f| %>
   <%= f.email %>
   <%= link_to 'user', "user/#{f.id}" %>
   <%= link_to 'unfollow', "/unfollow/#{f.id}", method: :delete %>
     <br>
 <% end %>
-<hr>
-
-
-<%= form_with(model: @post, url: posts_path, local: true ) do |f| %>
-   <%= f.label 'title'%>
-  <%= f.text_field (:title) %>
-  <br>
-  <%= f.label 'text'%>
-  <%= f.text_field (:content)%>
-  <br>
-  <%= f.label 'add photo'%>
-  <%= f.file_field (:pic) %>
-  <br>
-  <%= f.submit "Add post" %>
-<%end%>
+</div>
 
 
 <% end %>
+
+<div>
+<h2>Create new post</h2>
+<%= link_to 'Add new post', '/posts/new'%>
+</div>
+
+
+
 <hr>
+<div>
+  <h2>My posts:</h2>
+</div>
 <% @posts.each do |post| %>
 
 <%= post.title %> <br>
@@ -44,6 +39,9 @@
   <% if post.pic.attached? %>
     <%= image_tag(post.pic, size: "500x300") %>
   <% end %>
+  <%= link_to 'delete post', post_path(post), method: :delete %>
+<br>
+<%= 'Comments: '%>
 <br>
 <% comments = post.comments %>
   <% comments.each do |c| %>

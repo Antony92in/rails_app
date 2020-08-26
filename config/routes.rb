@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/userpage', to: 'welcome#userpage'
+  
+  get '/mypage', to: 'welcome#mypage'
 
   get '/users', to: 'users#users'
 
