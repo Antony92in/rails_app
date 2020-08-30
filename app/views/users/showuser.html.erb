@@ -13,7 +13,7 @@
 
  <div>
  <% like = Like.where('post_id = ?', post.id) %>
- <p>Likes : <%= like.size %> </p>
+ <p>Likes : <%= post.likes.size %> </p>
     <% arr = [] %>
         <% like.each do |l| %>
         <% arr << l.user_id %>

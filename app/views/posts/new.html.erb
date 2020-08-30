@@ -17,13 +17,13 @@
 
   <br>
    <%= f.label 'title'%>
-  <%= f.text_field (:title) %>
+  <%= f.text_field(:title) %>
   <br>
   <%= f.label 'text'%>
-  <%= f.text_field (:content)%>
+  <%= f.text_area(:content, size: "50x10")%>
   <br>
   <%= f.label 'add photo'%>
-  <%= f.file_field (:pic) %>
+  <%= f.file_field(:pic) %>
   <br>
   <%= f.submit "Add post" %>
 <%end%>
