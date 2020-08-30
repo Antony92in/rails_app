@@ -21,5 +21,21 @@ class PostsController < ApplicationController
         post.destroy
         redirect_back fallback_location: '/'
     end
+
+    def like
+        @like = Like.new
+        @like.post_id = params[:post_id]
+        @like.user_id = current_user.id
+        if @like.save
+            redirect_back fallback_location: '/'
+        end      
+    end
+
+    def dislike
+        Like.delete_by(post_id: params[:post_id], user_id: current_user.id)
+        redirect_back fallback_location: '/'
+    end
+    
+    
     
 end

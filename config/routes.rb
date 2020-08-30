@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   post '/comment', to: 'comments#create'
 
+  post '/like/:post_id', to: 'posts#like'
+
+  delete '/dislike/:post_id', to: 'posts#dislike'
+
   delete '/unfollow/:user_id', to: 'users#unfollow'
   
   root 'welcome#index'
