@@ -35,6 +35,7 @@
 <% @posts.each do |post| %>
 
 <%= post.title %> <br>
+<%= post.content %> <br>
 
   <% if post.pic.attached? %>
     <%= image_tag(post.pic, size: "500x300") %>
