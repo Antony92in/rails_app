@@ -1,11 +1,13 @@
-<%= link_to 'Main Page', '/'%>
+<div style="text-align: center;">
+<%= link_to 'Main page', '/', class: "btn btn-outline-primary" %>
+</div>
 <br>
+<hr>
 <% @users.each do |user| %>
   <% if user.avatar.attached? %>
     <%= image_tag(user.avatar, size: "100x100") %>
   <% end %>
-    <%= user.email %>
-    <%= link_to 'user', "user/#{user.id}" %>
+    <%= link_to "#{user.email}" , "user/#{user.id}", class: "btn btn-outline-info" %>
     <br>
     <%fol = Follower.where('followed_user = ?', user.id) %>
     <% arr = [] %>

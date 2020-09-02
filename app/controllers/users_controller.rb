@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
+
     def users
-        @users = User.all
+        @users = (User.all).reject { |x| x == current_user }
         render 'users/users'
     end
 
@@ -11,11 +13,20 @@ class UsersController < ApplicationController
     end
 
     def follow
-        fol = Follower.new
-        fol.followed_user = params[:user_id]
-        fol.follower = current_user.id
-        fol.save!
-        redirect_to action: "users"
+        arr = []
+        followers = Follower.where("followed_user = ?", params[:user_id])
+        followers.each do |i|
+            arr << i.follower
+        end
+        if arr.include?(current_user.id)
+            redirect_to action: "users"
+        else
+            fol = Follower.new
+            fol.followed_user = params[:user_id]
+            fol.follower = current_user.id
+            fol.save!
+            redirect_to action: "users" 
+        end
      end
     
     def unfollow
