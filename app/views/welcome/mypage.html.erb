@@ -51,7 +51,9 @@
   <% end %>
   <p>Likes: <%= post.likes.size %> </p> 
   
+  <%= link_to 'Edit post', edit_post_path(post) %>
   <%= link_to 'delete post', post_path(post), method: :delete, class: "btn btn-sm btn-outline-danger", data:{ confirm: "are you sure?"} %>
+
 <br>
 <%= 'Comments: '%>
 <br>

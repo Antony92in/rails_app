@@ -1,7 +1,7 @@
-<h1>Create new post</h1>
-
+<h1>Edit new post</h1>
+<% id = @post.id %>
 <%= form_with( model: @post , local: true )  do |f| %>
- <% if @post.errors.any? %>
+<% if @post.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@post.errors.count, "error") %> prohibited
@@ -27,5 +27,3 @@
   <br>
   <%= f.submit "Add post" %>
 <%end%>
-
-
