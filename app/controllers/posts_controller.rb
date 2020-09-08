@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     
     def create
         
-        if current_user.id === false
+        if current_user.id == false
             redirect_back fallback_location '/'
         else
             @post = Post.new(post_params)
