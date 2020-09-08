@@ -14,20 +14,13 @@ class PostsController < ApplicationController
     
     
     def create
-        
-        if current_user.id == false
-            redirect_back fallback_location '/'
-        else
-            @post = Post.new(post_params)
+        @post = Post.new(post_params)
         @post.author = current_user.id
         if @post.save
             redirect_to controller: "welcome", action: "mypage"
         else
             render 'new'
-        end
-        end
-        
-        
+        end      
     end
 
     def edit
