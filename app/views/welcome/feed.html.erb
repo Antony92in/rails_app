@@ -1,0 +1,40 @@
+<div id="posts" class="container">
+  <h2 style="text-align: center;">Feed <br>
+  <%= link_to 'Main', '/' %>
+  </h2>
+
+<hr>
+<% @posts.each do |post| %>
+<h4><%= User.find(post.author).email %></h4> <br>
+<h4><%= post.title %></h4> <br>
+<%= post.content %> <br>
+
+  <% if post.pic.attached? %>
+    <%= image_tag(post.pic, size: "500x300") %>
+  <% end %>
+  <p>Likes: <%= post.likes.size %> </p> 
+  <% like = Like.where('post_id = ?', post.id) %>
+  <% arr = [] %>
+        <% like.each do |l| %>
+        <% arr << l.user_id %>
+        <% end%>
+        
+        <% if arr.include?(current_user.id) %>
+            <%= 'Liked' %>
+            <%= link_to 'dislike', "/dislike/#{post.id}", method: :delete, class: "btn btn-outline-secondary" %>
+            <% else %>
+              <%= link_to 'like', "/like/#{post.id}", method: :post, class: "btn btn-outline-success" %>
+        <% end %>
+
+<br>
+<%= 'Comments: '%>
+<br>
+<% comments = post.comments %>
+  <% comments.each do |c| %>
+    <%= c.author %>:
+    <%= c.comment %>
+    <br>
+  <% end %>
+<hr>
+<% end %>
+</div>

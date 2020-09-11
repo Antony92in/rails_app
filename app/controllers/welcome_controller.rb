@@ -4,10 +4,14 @@ class WelcomeController < ApplicationController
   end
 
   def mypage
-    @posts = Post.where('author = ?', current_user.id).order(created_at: :desc)
+    @posts = current_user.posts.order(created_at: :desc)
     @followers = current_user.followings
   end
   
+  def feed
+    @posts = Post.where(author: current_user.followings.pluck(:id)).order(created_at: :desc)
+    render 'welcome/feed'
+  end
   
   
 end

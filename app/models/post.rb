@@ -5,6 +5,6 @@ class Post < ApplicationRecord
     has_one_attached :pic
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
-    belongs_to :user, optional: true
+    belongs_to :user, optional: true, foreign_key: :author
     
 end
