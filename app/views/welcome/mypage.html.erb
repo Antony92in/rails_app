@@ -26,7 +26,7 @@
 <%= link_to 'Add new post', '/posts/new', class: "btn btn-outline-primary"%>
 <br>
 <br>
-<%= link_to 'Edit page', edit_user_registration_path, class: "btn btn-outline-primary" %>
+<%= link_to 'Edit account', edit_user_registration_path, class: "btn btn-outline-primary" %>
 <br>
 <br>
 <%= link_to 'Feed', '/feed', class: "btn btn-outline-primary" %>
@@ -54,7 +54,7 @@
   <% end %>
   <p>Likes: <%= post.likes.size %> </p> 
   
-  <%= link_to 'Edit post', edit_post_path(post) %>
+  <%= link_to 'Edit post', edit_post_path(post), class: "btn btn-sm btn-outline-primary" %>
   <%= link_to 'delete post', post_path(post), method: :delete, class: "btn btn-sm btn-outline-danger", data:{ confirm: "are you sure?"} %>
 
 <br>
