@@ -12,7 +12,7 @@
 </div>
 
 <div id="follows">
-<h4>Users i follow</h4>
+<h4>Followings</h4>
 <% @followers.each do |f| %>
   <%= link_to "#{f.email}", "user/#{f.id}", class: "btn btn-outline-success"  %>
   <%= link_to 'unfollow', "/unfollow/#{f.id}", method: :delete %>

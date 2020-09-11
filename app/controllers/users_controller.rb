@@ -13,24 +13,20 @@ class UsersController < ApplicationController
     end
 
     def follow
-        arr = []
-        followers = Follower.where("followed_user = ?", params[:user_id])
-        followers.each do |i|
-            arr << i.follower
-        end
-        if arr.include?(current_user.id)
+        @user = User.find(params[:user_id])
+        if @user.followers.include?(current_user.id)
             redirect_to action: "users"
         else
-            fol = Follower.new
-            fol.followed_user = params[:user_id]
-            fol.follower = current_user.id
-            fol.save!
+            @fol = Follower.new
+            @fol.followed_user = User.find(params[:user_id])
+            @fol.follower = current_user
+            @fol.save!
             redirect_to action: "users" 
         end
      end
     
     def unfollow
-        Follower.delete_by(followed_user: params[:user_id], follower: current_user.id)
+        Follower.find_by_sql("DELETE FROM followers WHERE followed_user = '#{params[:user_id]}'   AND follower = '#{current_user.id}' ")
         redirect_back fallback_location: '/'
     end
     
