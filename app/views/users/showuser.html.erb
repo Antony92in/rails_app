@@ -14,28 +14,24 @@
    <h4> <%= post.title %> </h4> <br>
     <%= post.content %><br>
     <%= post.created_at %><br>
-    <% comments = post.comments%>
   <% if post.pic.attached? %>
     <%= image_tag(post.pic, size: "500x300") %>
   <% end %>
 
  <div>
- <% like = Like.where('post_id = ?', post.id) %>
+
  <p>Likes : <%= post.likes.size %> </p>
-    <% arr = [] %>
-        <% like.each do |l| %>
-        <% arr << l.user_id %>
-        <% end%>
-        
-        <% if arr.include?(current_user.id) %>
+ 
+        <% if post.likes.pluck(:user_id).include?(current_user.id) %>
             <%= 'Liked' %>
             <%= link_to 'dislike', "/dislike/#{post.id}", method: :delete, class: "btn btn-outline-secondary" %>
             <% else %>
               <%= link_to 'like', "/like/#{post.id}", method: :post, class: "btn btn-outline-success" %>
         <% end %>
-
+ 
  </div>
   <h3>Comments: </h3>
+  <% comments = post.comments%>
   <% comments.each do |c|%>
   <%= c.author %>:
   <%= c.comment %><br>

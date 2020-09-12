@@ -14,12 +14,9 @@
   <% end %>
   <p>Likes: <%= post.likes.size %> </p> 
   <% like = Like.where('post_id = ?', post.id) %>
-  <% arr = [] %>
-        <% like.each do |l| %>
-        <% arr << l.user_id %>
-        <% end%>
+
         
-        <% if arr.include?(current_user.id) %>
+        <% if post.likes.pluck(:user_id).include?(current_user.id) %>
             <%= 'Liked' %>
             <%= link_to 'dislike', "/dislike/#{post.id}", method: :delete, class: "btn btn-outline-secondary" %>
             <% else %>
