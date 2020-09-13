@@ -8,6 +8,8 @@
 
 <%= image_tag(current_user.avatar, size: "150x150") %>
 
+<% else %>
+<%= image_tag('img.jpg', size: "150x150") %>
 <% end %>
 </div>
 
