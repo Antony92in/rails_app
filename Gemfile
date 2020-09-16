@@ -20,6 +20,10 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 
+gem 'shoulda-matchers', '~> 4.0'
+
+gem 'rails-controller-testing'
+
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -31,6 +35,12 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+gem 'rspec-rails', '~> 4.0.1'
+
+gem 'factory_bot_rails'
+
+gem 'capybara', '>= 2.15'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

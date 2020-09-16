@@ -5,7 +5,7 @@ class CreateFollowers < ActiveRecord::Migration[6.0]
       t.integer :follower
     end
 
-    add_foreign_key: :followers, :users, column: :followed_user
-    add_foreign_key: :followers, :users, column: :follower
+    add_foreign_key :followers, :users, column: :followed_user
+    add_foreign_key :followers, :users, column: :follower
   end
 end
