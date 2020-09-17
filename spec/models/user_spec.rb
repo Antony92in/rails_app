@@ -8,4 +8,19 @@ RSpec.describe User, type: :model do
     end
   end
   
+  context "has many posts" do
+    it { should have_many(:posts) }
+  end
+  
+  context "has many followers" do
+    it { should have_many(:followers) }
+  end
+
+  context "has many followings" do
+    it { should have_many(:followings) }
+  end
+
+  context "has one attached avatar" do
+    it { should have_one_attached(:avatar) }
+  end
 end

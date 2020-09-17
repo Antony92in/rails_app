@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         if @post.author == current_user.id
             if @post.update(post_params)
-                redirect_to @post
+                redirect_to controller: "welcome", action: "mypage"
             else 
                 render 'edit'
             end
