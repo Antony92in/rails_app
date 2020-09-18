@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  context 'correct' do  
-    it 'should be saved' do   
-     post = build(:post)
-    expect(post.save).to be_truthy  
+  context 'correct' do
+    it 'should be saved' do
+      post = build(:post)
+      expect(post.save).to be_truthy
     end
   end
 
@@ -22,17 +22,15 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  context "has many posts" do
+  context 'has many posts' do
     it { should have_many(:comments) }
   end
 
-  context "has many likes" do
+  context 'has many likes' do
     it { should have_many(:likes) }
   end
 
-  context "has many comments" do
+  context 'has many comments' do
     it { should have_many(:comments) }
   end
-
-
 end

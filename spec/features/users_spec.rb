@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature 'Users', type: :feature do
   before :each do
     User.create(email: 'user@example.com', password: 'password')
   end
 
-  it "sign up user" do
+  it 'sign up user' do
     visit new_user_registration_path
     within('form') do
       fill_in 'Email', with: 'user@gmail.com'
@@ -16,9 +16,9 @@ RSpec.feature "Users", type: :feature do
     expect(page).to have_content 'All users'
   end
 
-  it "sign in user" do
+  it 'sign in user' do
     visit new_user_session_path
-    within('form') do 
+    within('form') do
       fill_in 'Email', with: 'user@example.com'
       fill_in 'Password', with: 'password'
     end

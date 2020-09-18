@@ -2,14 +2,14 @@ require 'faker'
 
 FactoryBot.define do
   factory :comment do
-    author { Faker::Name.name  }
+    author { Faker::Name.name }
     comment { Faker::Lorem.characters(number: 100) }
 
     trait :false_author do
-      author { }
+      author {}
     end
 
-    trait :short_comment do 
+    trait :short_comment do
       comment { '1234' }
     end
 
