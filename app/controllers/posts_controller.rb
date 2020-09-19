@@ -15,9 +15,28 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+    def update
+        @post = Post.find(params[:id])
+        if @post.author == current_user.id
+            if @post.update(post_params)
+                redirect_to controller: 'welcome', action: 'mypage'
+            else 
+                render 'edit'
+            end
+        else
+            render plain: 'error!'
+        end
+    end
+    
+    def destroy
+        @post = Post.find(params[:id])
+        if @post.author == current_user.id
+            @post.destroy
+            redirect_back fallback_location: '/'  
+        else
+            render plain: 'error!'
+        end
+    end
 
   def update
     @post = Post.find(params[:id])

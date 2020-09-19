@@ -24,11 +24,6 @@ RSpec.describe PostsController, type: :controller do
     subject { process :edit, method: :get, params: params }
 
     it { is_expected.to render_template(:edit) }
-
-    it "assign" do
-      subject
-      expect(assigns :post).to eq post  
-    end
   end
 
   describe "#update" do
