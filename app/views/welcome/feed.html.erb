@@ -5,7 +5,7 @@
 
 <hr>
 <% @posts.each do |post| %>
-<h4><%= User.find(post.author).email %></h4> <br>
+<h4><%= link_to "#{User.find(post.author).email}", "/user/#{post.author}"%></h4> <br>
 <h4><%= post.title %></h4> <br>
 <%= post.content %> <br>
 
@@ -31,6 +31,9 @@
     <%= c.author %>:
     <%= c.comment %>
     <br>
+    <% if c.author == current_user.email %>
+    <%= link_to 'Delete comment', "/delcomment/#{c.id}", method: :delete, class: "btn btn-sm btn-outline-primary" %><br>
+  <% end %>
   <% end %>
 <hr>
 <% end %>

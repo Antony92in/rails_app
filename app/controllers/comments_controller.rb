@@ -10,5 +10,14 @@ class CommentsController < ApplicationController
         redirect_back fallback_location: '/'
     end
      
-      
+    def destroy
+        @comment = Comment.find(params[:id])
+        if @comment.author == current_user.email
+          @comment.destroy 
+          redirect_back fallback_location: '/'
+        else
+            render plain: 'Error!'
+        end 
+    end
+    
 end

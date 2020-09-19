@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   delete '/unfollow/:user_id', to: 'users#unfollow'
 
+  delete '/delcomment/:id', to: 'comments#destroy'
+
   get '/feed', to: 'welcome#feed'
   
   root 'welcome#index'

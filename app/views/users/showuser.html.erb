@@ -35,6 +35,10 @@
   <% comments.each do |c|%>
   <%= c.author %>:
   <%= c.comment %><br>
+  <% if c.author == current_user.email %>
+    <%= link_to 'Delete comment', "/delcomment/#{c.id}", method: :delete, class: "btn btn-sm btn-outline-primary" %><br>
+  <% end %>
+  
   <%end%>
   <h4>Add your comment:</h4>
 <%= form_with(model: @post, url: '/comment', method: :post,  local: true) do |form| %>
