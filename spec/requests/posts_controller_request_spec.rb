@@ -53,7 +53,6 @@ RSpec.describe PostsController, type: :controller do
     it "post delete" do
       expect { subject }.to change { Post.count }.by(-1)
     end
-    
   end
   
   
