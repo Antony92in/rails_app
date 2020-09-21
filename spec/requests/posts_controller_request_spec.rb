@@ -2,22 +2,22 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   let(:user) { create(:user) }
-  
+
   before { sign_in user }
 
-  describe "POST #create" do
-    context "with valid params" do
+  describe 'POST #create' do
+    context 'with valid params' do
       let(:params) do
         { post: attributes_for(:post) }
       end
-      it "redirects to the created ad" do
-       post :create, params: params
-      expect(response).to redirect_to('/mypage')
+      it 'redirects to the created ad' do
+        post :create, params: params
+        expect(response).to redirect_to('/mypage')
       end
     end
   end
 
-  describe "#edit" do
+  describe '#edit' do
     let!(:post) { create :post, user: user }
     let(:params) { { id: post, user_id: user } }
 
@@ -26,36 +26,32 @@ RSpec.describe PostsController, type: :controller do
     it { is_expected.to render_template(:edit) }
   end
 
-  describe "#update" do
+  describe '#update' do
     let!(:post) { create :post, user: user }
     let(:params) { { id: post, author: user, post: { title: 'new title' } } }
 
-    subject { process :update, method: :put, params: params } 
+    subject { process :update, method: :put, params: params }
 
-    it "update" do
+    it 'update' do
       expect { subject }.to change { post.reload.title }.to('new title')
     end
 
-    context "with bad params" do
+    context 'with bad params' do
       let(:params) { { id: post, author: user, post: { title: '' } } }
-      it "does not update" do
+      it 'does not update' do
         expect { subject }.not_to change { post.reload.title }
       end
     end
   end
-  
-  describe "#destroy" do
-  let!(:post) { create :post, user: user }
-  let(:params) { { id: post, author: user } }
+
+  describe '#destroy' do
+    let!(:post) { create :post, user: user }
+    let(:params) { { id: post, author: user } }
 
     subject { process :destroy, method: :delete, params: params }
-    
-    it "post delete" do
+
+    it 'post delete' do
       expect { subject }.to change { Post.count }.by(-1)
     end
   end
-  
-  
-  
-
 end

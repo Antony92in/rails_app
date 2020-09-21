@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where('author = ?', params[:id]).order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc)
     render 'users/showuser'
   end
 

@@ -8,20 +8,19 @@ RSpec.describe WelcomeController, type: :controller do
     it { should render_template('welcome') }
   end
 
-  describe "#mypage" do
+  describe '#mypage' do
     before { sign_in user }
 
     subject { process :mypage, method: :get }
 
-    it { should render_template('mypage')}
+    it { should render_template('mypage') }
   end
 
-  describe "#feed" do
+  describe '#feed' do
     before { sign_in user }
 
     subject { process :feed, method: :get }
 
-    it { should render_template('feed')}
+    it { should render_template('feed') }
   end
-  
 end

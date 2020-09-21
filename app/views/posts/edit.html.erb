@@ -1,5 +1,5 @@
 <h1>Edit new post</h1>
-<% id = @post.id %>
+
 <%= form_with( model: @post , local: true )  do |f| %>
 <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -23,7 +23,11 @@
   <%= f.text_area(:content, size: "50x10")%>
   <br>
   <%= f.label 'add photo'%>
-  <%= f.file_field(:pic) %>
+  <%= f.file_field(:pic) %><br>
   <br>
-  <%= f.submit "Add post" %>
+  <%= link_to 'delete photo', "/pic_delete/#{@post.id}", method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+  <br>
+  <%= f.submit "Save" %>
 <%end%>
+
+<%= @post.id %>

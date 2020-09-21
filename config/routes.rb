@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   delete '/delcomment/:id', to: 'comments#destroy'
 
+  delete '/pic_delete/:id', to: 'posts#pic_delete'
+
   get '/feed', to: 'welcome#feed'
 
   root 'welcome#index'
